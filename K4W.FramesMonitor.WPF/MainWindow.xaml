@@ -1,0 +1,121 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.ignore.com"
+        xmlns:conv="clr-namespace:K4W.FramesMonitor.WPF.Converters" x:Class="K4W.FramesMonitor.WPF.MainWindow"
+        mc:Ignorable="d ignore"
+        Title="Kinecting for Windows - Frames Monitor" Height="425" Width="625" ResizeMode="CanMinimize" Icon="Resources/icon.png">
+	<Window.Resources>
+		<conv:InverseBooleanConverter x:Key="InverseBooleanConverter"/>
+	</Window.Resources>
+	<Window.DataContext>
+		<Binding Path="Monitor" Source="{StaticResource Locator}"/>
+	</Window.DataContext>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="100px" />
+			<RowDefinition Height="2" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="40px" />
+		</Grid.RowDefinitions>
+
+        <!-- HEADER -->
+		<StackPanel x:Name="Header" Grid.ColumnSpan="2" Margin="10" Orientation="Horizontal">
+			<Image Source="Resources/k4w.png" HorizontalAlignment="Center" VerticalAlignment="Center" MaxHeight="100" />
+			<TextBlock Text="Second Generation Kinect - Frames Monitor" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="20,0,0,0" Foreground="#FF2A2A2A" />
+		</StackPanel>
+
+        <!-- Seperator -->
+		<Rectangle x:Name="Seperator" Grid.Row="1" Grid.ColumnSpan="2" Fill="#FF2A2A2A" />
+        
+		<Border x:Name="KinectSources" BorderBrush="Black" BorderThickness="1" Margin="10" Grid.Row="2">
+			<Grid Margin="0">
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition Height="1"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition Width="1"/>
+					<ColumnDefinition Width="3*"/>
+					<ColumnDefinition Width="1"/>
+					<ColumnDefinition Width="3*"/>
+					<ColumnDefinition Width="1"/>
+					<ColumnDefinition Width="3*"/>
+				</Grid.ColumnDefinitions>
+
+                <!-- Table headers -->
+                <TextBlock Margin="5,0" TextWrapping="Wrap" Text="Track?" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Foreground="White" Panel.ZIndex="1"/>
+				<TextBlock Margin="5,0" TextWrapping="Wrap" Text="Kinect Source" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Foreground="White" Panel.ZIndex="1"/>
+				<TextBlock Margin="5,0" TextWrapping="Wrap" Text="Current" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Foreground="White" Panel.ZIndex="1"/>
+				<TextBlock Margin="5,0" TextWrapping="Wrap" Text="FPS" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Grid.Column="6" Foreground="White" Panel.ZIndex="1"/>
+
+                <!-- Track streams? -->
+                <CheckBox x:Name="TrackBody" Content="" HorizontalAlignment="Center" Margin="0" Grid.Row="1" VerticalAlignment="Center" IsChecked="{Binding TrackBody, Mode=TwoWay}" IsEnabled="{Binding IsMonitorRunning, Converter={StaticResource InverseBooleanConverter}}"/>
+                <CheckBox x:Name="TrackBodyIndex" Content="" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Center" IsChecked="{Binding TrackBodyIndex, Mode=TwoWay}" IsEnabled="{Binding IsMonitorRunning, Converter={StaticResource InverseBooleanConverter}}"/>
+                <CheckBox x:Name="TrackColor" Content="" HorizontalAlignment="Center" Margin="0" Grid.Row="3" VerticalAlignment="Center" IsChecked="{Binding TrackColor, Mode=TwoWay}" IsEnabled="{Binding IsMonitorRunning, Converter={StaticResource InverseBooleanConverter}}"/>
+				<CheckBox x:Name="TrackDepth" Content="" HorizontalAlignment="Center" Margin="0" Grid.Row="4" VerticalAlignment="Center" IsChecked="{Binding TrackDepth, Mode=TwoWay}" IsEnabled="{Binding IsMonitorRunning, Converter={StaticResource InverseBooleanConverter}}"/>
+				<CheckBox x:Name="TrackInfrared" Content="" HorizontalAlignment="Center" Margin="0" Grid.Row="5" VerticalAlignment="Center" IsChecked="{Binding TrackInfrared, Mode=TwoWay}" IsEnabled="{Binding IsMonitorRunning, Converter={StaticResource InverseBooleanConverter}}"/>
+				<CheckBox x:Name="TrackLongExposure" Content="" HorizontalAlignment="Center" Margin="0" Grid.Row="6" VerticalAlignment="Center" IsChecked="{Binding TrackLongExposure, Mode=TwoWay}" IsEnabled="{Binding IsMonitorRunning, Converter={StaticResource InverseBooleanConverter}}"/>
+
+                <!-- Streams -->
+                <TextBlock Margin="5,0" Grid.Row="1" TextWrapping="Wrap" Text="Body" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Panel.ZIndex="1" Grid.Column="2"/>
+                <TextBlock Margin="5,0" Grid.Row="2" TextWrapping="Wrap" Text="BodyIndex" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Panel.ZIndex="1" Grid.Column="2"/>
+                <TextBlock Margin="5,0" Grid.Row="3" TextWrapping="Wrap" Text="Color" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Panel.ZIndex="1" Grid.Column="2"/>
+				<TextBlock Margin="5,0" Grid.Row="4" TextWrapping="Wrap" Text="Depth" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Panel.ZIndex="1" Grid.Column="2"/>
+				<TextBlock Margin="5,0" Grid.Row="5" TextWrapping="Wrap" Text="Infrared" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Panel.ZIndex="1" Grid.Column="2"/>
+				<TextBlock Margin="5,0" Grid.Row="6" TextWrapping="Wrap" Text="Long Exposure Infrared" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Panel.ZIndex="1" Grid.Column="2"/>
+				<TextBlock Margin="5,0" Grid.Row="8" TextWrapping="Wrap" Text="Total" FontSize="13.333" FontWeight="Bold" TextAlignment="Center" VerticalAlignment="Center" Foreground="Black" Panel.ZIndex="1" Grid.Column="2" FontStyle="Italic"/>
+
+                <!-- Current counters -->
+                <TextBlock x:Name="CurrentBody" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding CurrentBody}" FontSize="16" TextAlignment="Center" Grid.Column="4" Foreground="#FFE24800" VerticalAlignment="Center"/>
+				<TextBlock x:Name="CurrentBodyIndex" Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding CurrentBodyIndex}" FontSize="16" TextAlignment="Center" Grid.Column="4" Foreground="#FFE24800" VerticalAlignment="Center"/>
+				<TextBlock x:Name="CurrentColor" Margin="0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding CurrentColor}" FontSize="16" TextAlignment="Center" Grid.Column="4" Foreground="#FFE24800" VerticalAlignment="Center"/>
+				<TextBlock x:Name="CurrentDepth" Margin="0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding CurrentDepth}" FontSize="16" TextAlignment="Center" Grid.Column="4" Foreground="#FFE24800" VerticalAlignment="Center"/>
+				<TextBlock x:Name="CurrentInfrared" Margin="0" Grid.Row="5" TextWrapping="Wrap" Text="{Binding CurrentInfrared}" FontSize="16" TextAlignment="Center" Grid.Column="4" Foreground="#FFE24800" VerticalAlignment="Center"/>
+				<TextBlock x:Name="CurrentLong" Margin="0" Grid.Row="6" TextWrapping="Wrap" Text="{Binding CurrentLongExposed}" FontSize="16" TextAlignment="Center" Grid.Column="4" Foreground="#FFE24800" VerticalAlignment="Center"/>
+				<TextBlock x:Name="CurrentTotal" Margin="0" Grid.Row="8" TextWrapping="Wrap" Text="{Binding CurrentTotal}" FontSize="16" TextAlignment="Center" Grid.Column="4" Foreground="#FFE24800" VerticalAlignment="Center"/>
+
+                <!-- FPS -->
+                <TextBlock x:Name="FPSBody" Margin="0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding FPSBody}" FontSize="16" TextAlignment="Center" Grid.Column="6" Foreground="#FF0C8000" VerticalAlignment="Center"/>
+				<TextBlock x:Name="FPSBodyIndex" Margin="0" Grid.Row="2" TextWrapping="Wrap" Text="{Binding FPSBodyIndex}" FontSize="16" TextAlignment="Center" Grid.Column="6" Foreground="#FF0C8000" VerticalAlignment="Center"/>
+				<TextBlock x:Name="FPSColor" Margin="0" Grid.Row="3" TextWrapping="Wrap" Text="{Binding FPSColor}" FontSize="16" TextAlignment="Center" Grid.Column="6" Foreground="#FF0C8000" VerticalAlignment="Center"/>
+				<TextBlock x:Name="FPSDepth" Margin="0" Grid.Row="4" TextWrapping="Wrap" Text="{Binding FPSDepth}" FontSize="16" TextAlignment="Center" Grid.Column="6" Foreground="#FF0C8000" VerticalAlignment="Center"/>
+				<TextBlock x:Name="FPSInfrared" Margin="0" Grid.Row="5" TextWrapping="Wrap" Text="{Binding FPSInfrared}" FontSize="16" TextAlignment="Center" Grid.Column="6" Foreground="#FF0C8000" VerticalAlignment="Center"/>
+				<TextBlock x:Name="FPSLong" Margin="0" Grid.Row="6" TextWrapping="Wrap" Text="{Binding FPSLongExposed}" FontSize="16" TextAlignment="Center" Grid.Column="6" Foreground="#FF0C8000" VerticalAlignment="Center"/>
+				<TextBlock x:Name="FPSTotal" Margin="0" Grid.Row="8" TextWrapping="Wrap" Text="{Binding FPSTotal}" FontSize="16" TextAlignment="Center" Grid.Column="6" Foreground="#FF0C8000" VerticalAlignment="Center"/>
+				
+                <!-- Seperators -->
+                <Rectangle x:Name="HeaderBackground" Grid.ColumnSpan="7" Fill="Black" Margin="0" Stroke="Black"/>
+				<Rectangle Grid.ColumnSpan="7" Fill="Black" Margin="0" Stroke="Black" Grid.Row="7"/>
+				<Rectangle Fill="Black" Margin="0" Stroke="Black" Grid.Column="1" Grid.RowSpan="9"/>
+				<Rectangle Fill="Black" Margin="0" Stroke="Black" Grid.Column="3" Grid.RowSpan="9"/>
+				<Rectangle Fill="Black" Margin="0" Stroke="Black" Grid.Column="5" Grid.RowSpan="9"/>
+
+			</Grid>
+		</Border>
+
+        <!-- Application actions -->
+        <Grid x:Name="Actions" Grid.Row="3">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition />
+				<ColumnDefinition />
+			</Grid.ColumnDefinitions>
+
+            <!-- Stop monitoring -->
+            <Button Content="Stop Monitor" Margin="5" Command="{Binding StopMonitorCommand, Mode=OneWay}" IsEnabled="{Binding IsMonitorRunning, Mode=OneWay}" />
+
+            <!-- Start monitoring -->
+            <Button Content="Start Monitor" Grid.Column="1" Margin="5" IsEnabled="{Binding IsMonitorRunning, Converter={StaticResource InverseBooleanConverter}, Mode=OneWay}" Command="{Binding StartMonitorCommand, Mode=OneWay}"/>
+		</Grid>
+	</Grid>
+</Window>

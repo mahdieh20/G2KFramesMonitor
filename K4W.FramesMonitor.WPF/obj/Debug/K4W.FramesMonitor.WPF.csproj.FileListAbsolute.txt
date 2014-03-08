@@ -1,0 +1,5 @@
+C:\Temp\K4W.FramesMonitor.WPF\obj\Debug\MainWindow.g.cs
+C:\Temp\K4W.FramesMonitor.WPF\obj\Debug\App.g.cs
+C:\Temp\K4W.FramesMonitor.WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Temp\K4W.FramesMonitor.WPF\obj\Debug\K4W.FramesMonitor.WPF_MarkupCompile.cache
+C:\Temp\K4W.FramesMonitor.WPF\obj\Debug\K4W.FramesMonitor.WPF_MarkupCompile.lref
