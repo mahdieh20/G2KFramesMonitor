@@ -16,7 +16,9 @@ This tutorial is based on the **November (2013)** version of the **alpha SDK** f
 
 ## Screenshots
 In this monitor run you can see that there was a **lot of light** in the room so all the frames come in at **30 FPS**.
+
 ![Screenshot](http://www.kinectingforwindows.com/images/github/frames_monitor_light_monitor.png)
 
 In this monitor run you can see that there was a **not much light** in the room so all the frames come in at **15 FPS**.
+
 ![Screenshot](http://www.kinectingforwindows.com/images/github/frames_monitor_dark_monitor.png)
