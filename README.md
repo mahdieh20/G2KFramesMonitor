@@ -3,9 +3,10 @@ Gen. II Kinect 4 Windows – Frames Monitor
 Simple tool that visualizes the amount of frames/second in a certain environment when using a 
 **MultiSourceFrameReader** where all the selected streams receive a new frame.
 
-This tool is only supported with the **Gen. II Kinect for Windows** and is created with **C#** & **WPF** *(MVVM-pattern)*.
+This tool is only supported with the **Gen. II Kinect for Windows** and is created with **C#** & **WPF**.
+*(MVVM-pattern)*
 
-Blog post on MultiSourceFrameReader & this tool coming soon.
+You can read my blog post on the *MultiSourceFrameReader* [here](http://www.kinectingforwindows.com/2014/05/19/second-gen-kinect-comparing-multisourceframereader-and-xsourceframereader/) & this tool [here](http://www.kinectingforwindows.com/2014/05/25/gen-ii-kinect-for-windows-introducing-frames-monitor/).
 
 ![K4W logo](http://www.kinectingforwindows.com/wp-content/themes/twentyten/images/headers/logo.jpg)
 
